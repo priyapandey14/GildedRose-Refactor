@@ -16,14 +16,12 @@
             {
                 if (item.SellIn < 0)
                 {
-                    item.SellIn = 2;
+                    item.Quality -= degradeQuality * 2;
                 }
                 else
                 {
-                    item.SellIn = 1;
-                }
-
-                item.Quality -= degradeQuality * item.SellIn;
+                    item.Quality -= degradeQuality * 1;
+                }                
             }
             if (item.Quality < 0)
             {

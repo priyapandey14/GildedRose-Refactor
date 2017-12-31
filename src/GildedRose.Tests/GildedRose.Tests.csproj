@@ -73,7 +73,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgedBrioHandlerTests.cs" />
+    <Compile Include="BackstagPassesTests.cs" />
+    <Compile Include="StandardItemHandlerTests.cs" />
     <Compile Include="ItemHandlerFactoryTests.cs" />
+    <Compile Include="NoChangeHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAssemblyTests.cs" />
   </ItemGroup>
