@@ -17,29 +17,23 @@ namespace GildedRose.Tests
         [Test]
         public void GetAllHandlers()
         {
-            IItemHandler ageBrioExpected = new AgedBrioHandler();
             var ageBrioActual = itemFactory.Create("Aged Brie");
-            Assert.AreEqual(ageBrioExpected, ageBrioActual);
-
-            IItemHandler backStagePassesExpected = new BackstagPasses();
+            Assert.IsTrue(typeof(AgedBrioHandler) == ageBrioActual.GetType());
+            
             var backStageActual = itemFactory.Create("Backstage passes to a TAFKAL80ETC concert");
-            Assert.AreEqual(backStagePassesExpected, backStageActual);
-
-            IItemHandler dexterityExpected = new StandardItemHandler();
-            var dexterityActual = itemFactory.Create(" + 5 Dexterity Vest");
-            Assert.AreEqual(dexterityExpected, dexterityActual);
-
-            IItemHandler elixirMongooseExpected = new StandardItemHandler();
+            Assert.IsTrue(typeof(BackstagPasses) == backStageActual.GetType());
+            
+            var dexterityActual = itemFactory.Create("+5 Dexterity Vest");
+            Assert.IsTrue(typeof(StandardItemHandler) == dexterityActual.GetType());
+                        
             var elixirMongooseActual = itemFactory.Create("Elixir of the Mongoose");
-            Assert.AreEqual(elixirMongooseExpected, elixirMongooseActual);
-
-            IItemHandler sulfurasExpected = new StandardItemHandler();
+            Assert.IsTrue(typeof(StandardItemHandler) == elixirMongooseActual.GetType());
+                        
             var sulfurasActual = itemFactory.Create("Sulfuras, Hand of Ragnaros");
-            Assert.AreEqual(sulfurasExpected, sulfurasActual);
-
-            IItemHandler conjuredManaExpected = new StandardItemHandler();
+            Assert.IsTrue(typeof(NoChangeHandler) == sulfurasActual.GetType());
+            
             var conjuredManaActual = itemFactory.Create("Conjured Mana Cake");
-            Assert.AreEqual(conjuredManaExpected, conjuredManaActual);            
+            Assert.AreEqual(typeof(StandardItemHandler), conjuredManaActual.GetType());            
         }
 
         [TearDown]

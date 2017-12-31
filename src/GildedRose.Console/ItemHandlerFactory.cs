@@ -14,10 +14,10 @@ namespace GildedRose.Console
         private HashSet<string> itemList = new HashSet<string>
         {
             "+5 Dexterity Vest",
-            "Elixir of the Mongoose",
-            "Sulfuras, Hand of Ragnaros",
-            "Conjured Mana Cake"
+            "Elixir of the Mongoose"                 
         };
+
+        private const string conjure = "Conjured Mana Cake";
 
         public IItemHandler Create(string itemName)
         {
@@ -31,7 +31,15 @@ namespace GildedRose.Console
             }
             else if (itemList.Contains(itemName))
             {
-                return new StandardItemHandler();
+                return new StandardItemHandler(1);
+            }
+            else if (string.Equals(itemName, sulfuras, StringComparison.OrdinalIgnoreCase))
+            {
+                return new NoChangeHandler();
+            }
+            else if (string.Equals(itemName, conjure, StringComparison.OrdinalIgnoreCase))
+            {
+                return new StandardItemHandler(2);
             }
 
             throw new InvalidOperationException($"{itemName} is not supported");
